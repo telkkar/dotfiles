@@ -1,0 +1,31 @@
+# This is Git's per-user configuration file.
+[user]
+	name = William Michael Holbrook II
+	email = wmh@fastmail.com
+	signingkey = 5896B66618C7EF0A
+
+[core]
+	editor = vim
+	whitespace = trailing-space,space-before-tab
+
+[color]
+	ui=true
+
+[diff]
+	mnemonicprefix = true
+
+[branch]
+	autosetupmerge = true
+
+[merge]
+	stat = true
+
+[push]
+	default = simple
+
+[gpg]
+	program = gpg2
+
+[web]
+	browser = firefox
+
