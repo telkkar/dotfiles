@@ -13,8 +13,11 @@ if ! pgrep -x -u "${USER}" gpg-agent >/dev/null 2>&1; then
 	gpg-connect-agent /bye >/dev/null 2>&1
 fi
 
-# Kil all ssh-agent things
+# Kill all ssh-agent things
 pkill ssh-agent
+
+# Set GPG TTY
+export GPG_TTY=$(tty)
 
 # Set SSH to use gpg-agent
 unset SSH_AGENT_PID
@@ -23,9 +26,6 @@ if [ "${gnupg_SSH_AUTH_SOCK_BY:-0}" -ne $$ ]; then
 	export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 	export GPG_AGENT_INFO
 fi
-
-# Set GPG TTY
-export GPG_TTY=$(tty)
 
 # Refresh gpg-agent tty in case user switches to an X session
 gpg-connect-agent updatestartuptty /bye >/dev/null
