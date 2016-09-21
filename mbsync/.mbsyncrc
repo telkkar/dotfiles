@@ -1,0 +1,29 @@
+# Account fastmail
+IMAPAccount fastmail
+Host mail.messagingengine.com
+# Use Port 992 as mbsync has trouble matching INBOX with pattern *
+# See "Alternate namespace" at https://www.fastmail.com/help/technical/servernamesandports.html?u=8d084147
+Port 992
+User wmh@fastmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.passwords/fastmail.gpg"
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-bundle.crt
+
+IMAPStore fastmail-remote
+Account fastmail
+
+MaildirStore fastmail-local
+Path ~/mail/fastmail/
+Inbox ~/mail/fastmail/INBOX
+
+Channel fastmail
+Master :fastmail-remote:
+Slave :fastmail-local:
+Patterns *
+Create Both
+Remove Both
+Sync All
+Expunge Both
+SyncState *
+
