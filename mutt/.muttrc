@@ -1,0 +1,27 @@
+# Paths -------------------------------
+set folder            = $HOME/mail/fastmail
+set spoolfile         = +INBOX
+set alias_file        = ~/.mutt/alias
+set header_cache      = ~/.mutt/cache/headers
+set message_cachedir  = ~/.mutt/cache/bodies
+set certificate_file  = ~/.mutt/certificates
+set signature         = ~/.mutt/signature
+
+# Account Settings --------------------
+set from           = wmh@fastmail.com
+set realname       = "William M Holbrook II"
+set mbox_type      = Maildir
+set timeout        = 3
+set quit
+set sort           = "threads"
+set strict_threads = "yes"
+set sort_aux       = "last-date-received"
+
+bind index - collapse-thread
+bind index _ collapse-all
+
+set sendmail       = "/usr/bin/msmtp"
+set use_from       = yes
+set envelope_from  = yes
+set sendmail_wait  = 0
+unset record
