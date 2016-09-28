@@ -16,6 +16,7 @@ set quit
 set sort           = "threads"
 set strict_threads = "yes"
 set sort_aux       = "last-date-received"
+set send_charset   = "utf-8"
 
 bind index - collapse-thread
 bind index _ collapse-all
