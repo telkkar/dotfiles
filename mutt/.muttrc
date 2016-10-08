@@ -1,23 +1,110 @@
 # Paths -------------------------------
 set folder            = $HOME/mail/fastmail
-set spoolfile         = +INBOX
 set alias_file        = ~/.mutt/alias
 set header_cache      = ~/.mutt/cache/headers
 set message_cachedir  = ~/.mutt/cache/bodies
 set certificate_file  = ~/.mutt/certificates
+set mailcap_path      = ~/.mutt/mailcap
+set tmpdir            = ~/.mutt/temp
 set signature         = ~/.mutt/signature
 
-# Account Settings --------------------
-set from           = wmh@fastmail.com
-set realname       = "William M Holbrook II"
+
+# Basic Options ----------------------
+set wait_key       = No
 set mbox_type      = Maildir
 set timeout        = 3
 set quit
-set sort           = "threads"
-set strict_threads = "yes"
-set sort_aux       = "last-date-received"
+unset mark_old
+set pipe_decode
+set thorough_search
+set charset        = "utf-8"
 set send_charset   = "utf-8"
+unset use_domain
 
+
+# Sidebar Patch -----------------------
+#set sidebar_delim   = '  │'
+set sidebar_visible = yes
+set sidebar_width   = 24
+#set sidebar_new color 221 color233
+
+
+# Status Bar --------------------------
+set status_chars   = " *%A"
+set status_format  = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
+
+# Header Options ----------------------
+ignore *
+unignore from: to: cc: date: subject:
+unhdr_order *
+hdr_order from: to: cc: date: subject:
+
+
+# Index View Options ------------------
+set date_format = "%m/%d"
+set index_format = "[%Z]  %D  %-20.20F  %s"
+set sort = threads
+set sort_aux       = "last-date-received"
+
+
+# Index Key Bindings ------------------
+bind index gg      first-entry
+bind index G       last-entry
+bind index R       group-reply
+bind index <tab>   sync-mailbox
+bind index <space> collapse-thread
+
+
+# Pager View Options ------------------
+set pager_index_lines = 10
+set pager_context     = 3
+set pager_stop
+set menu_scroll
+set tilde
+unset markers
+
+
+# Pager Key Bindings -----------------
+bind pager k  previous-line
+bind pager j  next-line
+bind pager gg top
+bind pager G  bottom
+
+bind pager R  group-reply
+
+# View Attachments properly
+bind attach <return> view-mailcap
+
+# Sync Email
+macro index O "<shell-escape>mbsync fastmail<enter>"   "run mbsync to sync all mail"
+
+
+# Sidebar Navigation ------------------
+bind index,pager <down>    sidebar-next
+bind index,pager <up>      sidebar-prev
+bind index,pager <right>   sidebar-open
+
+
+# Account Settings --------------------
+# Folders -----------------------------
+set spoolfile         = +INBOX
+set record            = +Sent
+set postponed         = +Drafts
+set mbox              = +Archive
+set trash             = +Trash
+
+# Mailboxes to show in sidebar
+mailboxes +INBOX \
+          +fedora_devel \
+          +fedora_testannounce \
+          +fedora_commops \
+          +Sent \
+          +Drafts \
+          +Trash \
+
+set from           = "wmh@fastmail.com"
+set realname       = "William Michael Holbrook II"
 bind index - collapse-thread
 bind index _ collapse-all
 
@@ -25,4 +112,4 @@ set sendmail       = "/usr/bin/msmtp"
 set use_from       = yes
 set envelope_from  = yes
 set sendmail_wait  = 0
-unset record
+
