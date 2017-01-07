@@ -66,7 +66,10 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+# The upgrade to Fedora 25 on the desktop broke this. Setting it manually now.
+# TODO: Fix this to point at whatever I want (urxvt?) and set it up and have it under version control
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
