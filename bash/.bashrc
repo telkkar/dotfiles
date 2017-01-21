@@ -23,6 +23,9 @@ export GPG_TTY=$(tty)
 unset SSH_AGENT_PID
 if [ "${gnupg_SSH_AUTH_SOCK_BY:-0}" -ne $$ ]; then
 	#export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
+	# Do I remember why I put this here, rather than the line above?
+	# Perhaps Googling that particular path will help. I believe this is a Fedora-specific configuration
+	# Might want to consider writing a blog post about it.
 	export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 	export GPG_AGENT_INFO
 fi
