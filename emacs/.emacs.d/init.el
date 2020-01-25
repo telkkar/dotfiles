@@ -32,6 +32,9 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
+;; Remove trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Display empty lines
 ;(global-whitespace-mode)
 
@@ -39,18 +42,16 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Enable SBCL
-(setq inferior-lisp-program "sbcl")
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
+;(setq inferior-lisp-program "sbcl")
+;(load (expand-file-name "~/quicklisp/slime-helper.el"))
 
-
-;; Theme
-(load-theme 'dracula t)
 
 ;; Load other modules/packages settings
 (add-to-list 'load-path "~/.emacs.d/modules")
 (load-library "org-init")
-(load-library "notmuch-init")
 (load-library "ivy-init")
+(load-library "swiper-init")
+(load-library "theme-dracula")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

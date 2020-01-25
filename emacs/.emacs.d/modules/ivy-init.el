@@ -1,10 +1,12 @@
 (ivy-mode 1)
 
-;(setq ivy-height 25)
-
 (setq ivy-use-virtual-buffers t)
+(setq ivy-height 25)
 (setq ivy-count-format "(%d/%d) ")
 
+(setq ivy-initializeinputs-alist nil)
+(setq ivy-re-builders-alist
+      '((t . ivy--regex-ignore-order)))
 
 (global-set-key (kbd "C-s") 'swiper)
 
