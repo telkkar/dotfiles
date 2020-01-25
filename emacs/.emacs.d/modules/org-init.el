@@ -26,7 +26,7 @@
 
 
 ;; Agenda
-(setq org-agenda-files (list org-directory))
+(setq org-agenda-files (directory-files-recursively org-directory org-agenda-file-regexp))
 (setq org-agenda-include-diary t)
 (setq org-agenda-window-setup 'current-window)
 (setq org-deadline-warning-days 7)
